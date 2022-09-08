@@ -1,3 +1,5 @@
 .ipynb_checkpoints
 .vscode
 
+resources.ipynb
+not_for_github/*

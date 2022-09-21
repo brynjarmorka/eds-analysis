@@ -8,5 +8,8 @@ src/not_for_github/
 src/main.py
 
 plots/all_NW_and_GaAs_seperated.html
+plots/Mo_30kV_with_gaussian_fit_and_peak_shifted_bg_down.html
+plots/Mo_30kV_with_gaussian_fit.html
+
 
 **__pycache__

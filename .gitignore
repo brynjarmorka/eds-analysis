@@ -2,4 +2,8 @@
 .vscode
 
 # resources.ipynb
-not_for_github/*
+src/not_for_github/
+# src/utils/**
+src/main.py
+
+**__pycache__

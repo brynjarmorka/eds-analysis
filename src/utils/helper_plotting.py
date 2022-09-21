@@ -66,29 +66,7 @@ def simple_plot_with_lines(filenr, lines, kev=False, start=0, stop=2048):
 # simple_plot_with_lines(10, [250, 1760], start=225, stop=350)
 
 
-def plot_multiple_spectra(arrays, start=0, stop=2048, normalize=False, split=None):
-    """
-    Plot multiple data arrays from the raw data.
-    """
-    fig, axs = plt.subplots(nrows=1, ncols=1, figsize=(15, 5), tight_layout=True)
-    x = np.arange(0, 2048, 1)  # making the 2048 long x-axis as channel numbers
-    for i in range(len(arrays)):
-        if split:
-            axs.step(
-                x[start:stop],
-                arrays[i][1][start:stop] + i * split,
-                label=f"{arrays[i][0]} + {i*split:.2f}",
-            )
-        else:
-            axs.step(x[start:stop], arrays[i][1][start:stop], label=arrays[i][0])
-    axs.set_title(
-        "X-ray intensities normalized to 1 for the highets peak in one spectrum"
-    )
-    axs.set_xlabel("channel number (~10eV)")
-    axs.legend()
-
-
-def plot_multiple_spectra(arrays, start=0, stop=2048, normalize=False, split=None):
+def plot_multiple_spectra(arrays, start=0, stop=2048, split=None):
     """
     Plot multiple data arrays from the raw data using matplotlib.
     """

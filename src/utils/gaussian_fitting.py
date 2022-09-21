@@ -94,12 +94,11 @@ def fit_peak_to_gaussian(
     np.array
         Either the estimated [x, y_est] or the fitted param [[amp, cen, wid], covar].
     """
-    if start is None:
+    if not start:
         start = guess - buffer
-    if stop is None:
+    if not stop:
         stop = guess + buffer
     x = np.arange(start, stop, 1)
-    # x = x2048 = np.arange(0, 2048, 1)[start:stop] # evt ...arange(start, stop, 1)
     y = raw_y[0][1][start:stop]
     # the initial guess is the center, the amplitude and the width of the peak
     init_vals = [guess_amp, guess, guess_wid]
@@ -152,9 +151,9 @@ def fit_two_peaks_to_two_gaussians(
     np.array
         Either the estimated [x, y_est] or the fitted param [[amp, cen, wid], covar].
     """
-    if start is None:
+    if not start:  # if not None
         start = min(guesses) - buffer
-    if stop is None:
+    if not stop:
         stop = max(guesses) + buffer
     x = np.arange(start, stop, 1)
     y = raw_y[0][1][start:stop]

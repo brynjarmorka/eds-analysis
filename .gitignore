@@ -2,8 +2,11 @@
 .vscode
 
 # resources.ipynb
+
 src/not_for_github/
 # src/utils/**
 src/main.py
+
+plots/all_NW_and_GaAs_seperated.html
 
 **__pycache__

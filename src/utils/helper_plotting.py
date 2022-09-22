@@ -128,3 +128,38 @@ def plotly_plot_multiple_spectra(
     if show:
         fig.show()
     return fig
+
+
+def plotly_simple(
+    x_arrs,
+    y_arrs,
+    title="Title",
+    xaxis_title="Channel number [~10eV]",
+    yaxis_title="Relative intensity [a.u.]",
+    mode="lines+markers",
+    names=None,
+    show=False,
+):
+    """
+    Plot a simple plotly plot.
+    """
+    if names is None:
+        names = np.arange(0, len(x_arrs), 1)
+    fig = go.Figure()
+    for i in range(len(x_arrs)):
+        fig.add_trace(
+            go.Scatter(
+                x=x_arrs[i],
+                y=y_arrs[i],
+                mode=mode,
+                name=names[i],
+            )
+        )
+    fig.update_layout(
+        title=title,
+        xaxis_title=xaxis_title,
+        yaxis_title=yaxis_title,
+    )
+    if show:
+        fig.show()
+    return fig

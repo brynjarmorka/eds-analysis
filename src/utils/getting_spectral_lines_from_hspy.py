@@ -48,6 +48,19 @@ def get_the_lines_from_hspy():
     return lines_dict
 
 
+def get_spesific_lines_from_hspy(lines_list):
+    # Getting spesific lines from hspy
+    lines_dict = {}
+    for line in lines_list:
+        try:
+            element_info = hs.material.elements[line].Atomic_properties.Xray_lines.as_dictionary()
+            lines_dict[line] = element_info
+        except:
+            print(f"Element '{line}' not found")
+            continue
+    
+    return lines_dict
+
 # everything above this line runs on import,
 # while everything below this line only runs when this file is called directly
 if __name__ == "__main__":

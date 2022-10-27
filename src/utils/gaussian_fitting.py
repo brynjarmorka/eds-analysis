@@ -208,16 +208,12 @@ def fit_two_peaks_to_two_gaussians(
 
 
 def fit_n_peaks_to_gaussian(
-    raw_y,
-    guesses_peaks,
-    guesses_std=1,
-    guesses_amp=1,
-    give_xy=True
+    raw_y, guesses_peaks, guesses_std=1, guesses_amp=1, give_xy=True
 ):
     """
     Fits n peaks to n gaussians, given an array and the guessed centers.
-    If no start and stop are given, it use the guess +- buffer channels.
-    Returns the fitted param [[amp, cen, wid], covar].
+    Returns either the y values of the fitted gaussians, or
+    the fitted param [[amp, cen, wid], covar].
 
     Parameters
     ----------

@@ -173,23 +173,24 @@ def plotly_plot(
 
             # adding names to the lines
             try:
-                line_name = f"{vlines_name[i]}: {vline:.4f}"
+                line_name = f"{vlines_name[i]} {vline:.5f} "
             except (IndexError, TypeError):
-                line_name = f"{vline:.4f}"
+                line_name = f"{vline:.4f} "
             fig.add_trace(
                 go.Scatter(
                     x=[vline, vline],
-                    y=[-0.05, 1],
-                    line_dash="dot",
+                    y=[0 + i * 0.05, 1],
+                    # line_dash="dot",
                     line_width=1,
                     text=[line_name, line_name],
-                    textposition="bottom right",
+                    textposition="bottom left",
+                    textfont=dict(family="sans serif"),
                     mode="lines+text",
                     name=line_name,
-                    marker=dict(color="black"),
+                    marker=dict(color="grey"),
                 )
             )
-            fig.update_traces(textfont_size=8)
+            fig.update_traces(textfont_size=14)
 
     # plotting eventual gaussian fitted curves from fit_vals
     if fit_params is not None:
@@ -212,7 +213,7 @@ def plotly_plot(
         title=title,
         xaxis_title=xaxis_title,
         yaxis_title=yaxis_title,
-        legend_title="Legend",
+        # legend_title="Legend",
     )
 
     return fig

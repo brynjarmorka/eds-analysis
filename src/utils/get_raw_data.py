@@ -98,7 +98,7 @@ def sum_multiple_data_arrays(arrays, normalize=False):
         return [names, summed]
 
 
-def get_multiple_data_arrays(filters=[], every=False):
+def get_multiple_data_arrays(filters=[], every=False, normalize=True):
     """
     Get multiple data arrays from the raw data, with a filter on the filenames.
 
@@ -112,7 +112,9 @@ def get_multiple_data_arrays(filters=[], every=False):
             emsa_array.append(
                 [
                     emsa_paths[i].stem,
-                    get_raw_data_array_from_filename(emsa_paths[i], normalize=True),
+                    get_raw_data_array_from_filename(
+                        emsa_paths[i], normalize=normalize
+                    ),
                 ]
             )
         return emsa_array
@@ -123,7 +125,7 @@ def get_multiple_data_arrays(filters=[], every=False):
                 emsa_array.append(
                     [
                         filename.stem,
-                        get_raw_data_array_from_filename(filename, normalize=True),
+                        get_raw_data_array_from_filename(filename, normalize=normalize),
                     ]
                 )
     return emsa_array

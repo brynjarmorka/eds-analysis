@@ -89,7 +89,7 @@ def plot_multiple_spectra(arrays, start=0, stop=2048, split=None):
 
 
 def plotly_plot_multiple_spectra(
-    arrays, start=0, stop=2048, split=None, show=False, mode="lines+markers"
+    arrays, start=0, stop=2048, split=None, show=False, mode="lines+markers", x=None
 ):
     """
     Using plotly to make an interactive plot with mulitple arrays.
@@ -98,13 +98,14 @@ def plotly_plot_multiple_spectra(
 
     Returns a plotly figure object.
     """
-    x2048 = np.arange(0, 2048, 1)  # making the 2048 long x-axis as channel numbers
+    if x is None:
+        x = np.arange(0, 2048, 1)  # making the 2048 long x-axis as channel numbers
     fig = go.Figure()
     for i in range(len(arrays)):
         if split:
             fig.add_trace(
                 go.Scatter(
-                    x=x2048[start:stop],
+                    x=x[start:stop],
                     y=arrays[i][1][start:stop] + i * split,
                     mode=mode,
                     name=f"{arrays[i][0]} + {i*split:.2f}",
@@ -113,7 +114,7 @@ def plotly_plot_multiple_spectra(
         else:
             fig.add_trace(
                 go.Scatter(
-                    x=x2048[start:stop],
+                    x=x[start:stop],
                     y=arrays[i][1][start:stop],
                     mode=mode,
                     name=arrays[i][0],

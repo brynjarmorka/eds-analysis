@@ -5,7 +5,7 @@ from scipy.optimize import curve_fit
 from scipy.stats import norm
 
 
-def gaussian(x, amp, mu, std):
+def gaussian(x, amp, mu, std, high_res=False, res_increase=10):
     """
     Returns the value of a gaussian function with amplitude amp, mean mu and standard deviation std at x.
 
@@ -19,13 +19,19 @@ def gaussian(x, amp, mu, std):
         center of the gaussian
     std : float
         standard deviation of the gaussian
+    high_res : bool, optional
+        if True, the gaussian is evaluated at a higher resolution, by default False
+    res_increase : int, optional
+        the factor by which the resolution is increased, by default 10
 
     Returns
     -------
     list
         list with the values of the gaussian at x
     """
-
+    if high_res:
+        x = np.linspace(x[0], x[-1], len(x) * res_increase)
+        return amp * np.exp(-((x - mu) ** 2) / (2 * std**2))
     return amp * np.exp(-((x - mu) ** 2) / (2 * std**2))
 
 

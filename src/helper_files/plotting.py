@@ -173,17 +173,18 @@ def plotly_plot(
 
             # adding names to the lines
             try:
-                line_name = f"{vlines_name[i]} {vline:.5f} "
+                line_name = f" {vlines_name[i]} "
+                # line_name = f"{vlines_name[i]} {vline:.5f} "
             except (IndexError, TypeError):
                 line_name = f"{vline:.4f} "
             fig.add_trace(
                 go.Scatter(
                     x=[vline, vline],
                     y=[0 + i * 0.05, 1],
-                    # line_dash="dot",
-                    line_width=1,
+                    line_dash="dot",
+                    line_width=2,
                     text=[line_name, line_name],
-                    textposition="bottom left",
+                    textposition="bottom right",
                     textfont=dict(family="sans serif"),
                     mode="lines+text",
                     name=line_name,

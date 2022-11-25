@@ -130,9 +130,22 @@ def get_multiple_data_arrays(filters=[], every=False, normalize=True):
                 )
     return emsa_array
 
+def get_array_and_names(filter):
+    """
+    Get the data array and the names of the files that match the filter.
+    Filter on just one string, not a list.
 
-#%%
-# everything above this line runs on import,
-# while everything below this line only runs when get_raw_data.py is called
-if __name__ == "__main__":
-    print("You just ran the module 'get_raw_data.py'")
+    Parameters
+    ----------
+    filter : string
+        The filter to use on the filenames. E.g. 'GaAs'
+
+    Returns
+    -------
+    tuple
+        (data_array, names)
+    """    
+    data = get_multiple_data_arrays(filters=[filter])
+    names = [x[0] for x in data]
+    arr = [x[1] for x in data]
+    return arr, names
